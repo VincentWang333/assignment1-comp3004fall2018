@@ -2,6 +2,9 @@ package core;
 
 import static org.junit.Assert.assertTrue;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import junit.framework.TestCase;
 
 public class SimpleTest extends TestCase{
@@ -26,6 +29,14 @@ public class SimpleTest extends TestCase{
 	{
 		Deck d = new Deck();
 		assertTrue(d.buildDeck().size() == 52);		
+	} 
+	public void testShuffleDeck()
+	{
+		Deck d = new Deck();
+		List<Card> newDeck = new ArrayList<Card>();
+		newDeck = d.buildDeck();
+		newDeck = d.shuffleDeck(newDeck);
+		assertTrue(newDeck.size()==52&&newDeck!=null);	
 	}
 	
 
