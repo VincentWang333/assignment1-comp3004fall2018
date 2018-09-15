@@ -21,9 +21,16 @@ public class SimpleTest extends TestCase{
 		Card aceOfHeart = new Card ("Ace","Hearts");
 		assertTrue(aceOfHeart.getValue()==11);
 	}
+	
+	public void testBuildDeck()
+	{
+		Deck d = new Deck();
+		assertTrue(d.buildDeck().size() == 52);		
+	}
+	
+
 
 	
 
-	
 
 }

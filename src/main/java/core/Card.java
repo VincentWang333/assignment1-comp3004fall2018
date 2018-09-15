@@ -3,12 +3,12 @@ package core;
 public class Card {
 	private int value;
 	private String name;
-	private String suit;
+	private String suite;
 	private boolean ace;
-	public Card(String name,String suit)
+	public Card(String name,String suite)
 	{
 		this.name = name;
-		this.suit = suit;
+		this.suite = suite;
 		this.value = determineCardValue(name);
 	}
 	private int determineCardValue(String name2) {
@@ -34,6 +34,9 @@ public class Card {
 	public boolean isAce() {
 		return ace;
 	}
+	 public void printCard(){
+		   System.out.println(this.name + " of " + this.suite);
+	   	}
 
 
 }
