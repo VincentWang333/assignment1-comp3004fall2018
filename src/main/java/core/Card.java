@@ -11,6 +11,9 @@ public class Card {
 		this.value = determineCardValue(this.name);
 	}
 	
+	public String getName() {
+		return this.name;
+	}
 	
 	public void transferCardName(String name, String suite)
 	{
@@ -94,6 +97,18 @@ public class Card {
 	 public void printCard(){
 		   System.out.println(this.name + " of " + this.suite);
 	   	}
+	 
+	 public boolean iSPoker()
+	 {
+		 boolean result = true;
+		 if(this.name!="Ace" || this.name!="2" || this.name!="3" || this.name!="4" || this.name!="5" 
+				 || this.name!="6" || this.name!="7" || this.name!="8"|| this.name!="9"|| this.name!="10"||this.name!="Jack"||this.name!="Queen"||this.name!="King"
+				 || this.suite!="Hearts" || this.suite != "Spades" || this.suite!="Clubs" || this.suite!="Diamonds")
+		 {
+			 result = false;
+		 }
+		 return result;
+	 }
 
 
 }

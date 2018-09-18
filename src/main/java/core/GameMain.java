@@ -101,9 +101,10 @@ public class GameMain {
 			{
 				aceInPlayerHand++;
 			}
-			
-			if(playerFirstCard.getValue()==playerSecondCard.getValue())
+
+			if(playerFirstCard.getName().equals(playerSecondCard.getName()))
 			{
+			
 				playerCanSplit = true;
 			}
 
@@ -128,7 +129,6 @@ public class GameMain {
 			{
 				aceInDealerHand++;
 			}
-			
 			
 			dealerSecondHandCard = sc.next();
 			System.out.println("Dealer has: " + dealerTotal);
@@ -188,6 +188,7 @@ public class GameMain {
 			    		optionOne.add(newCardForOprionOne);
 			    		optionOneTotal += newCardForOprionOne.getValue();
 			    		a =sc.next();
+						
 			    		newCardForOprionTwo = new Card(a.substring(1),a.substring(0, 1));
 			    		optionTwo.add(newCardForOprionTwo);
 			    		optionTwoTotal += newCardForOprionTwo.getValue();	
@@ -209,7 +210,7 @@ public class GameMain {
 			    		if(!isConsole)
 						{
 							String r = sc.next();
-							
+				
 							if(r.equals("S"))
 							{
 								anotherCardForOptionOne = false;
@@ -236,6 +237,7 @@ public class GameMain {
 							if(!isConsole)
 							{
 								String c = sc.next();
+		
 								anotherNewCardForOptionOne = new Card(c.substring(1),c.substring(0, 1));
 								optionOne.add(anotherNewCardForOptionOne);
 							}
@@ -291,7 +293,9 @@ public class GameMain {
 							Card anotherNewCardForOptionTwo = new Card("10","K");
 							if(!isConsole)
 							{
+								
 								String c = sc.next();
+						
 								anotherNewCardForOptionTwo = new Card(c.substring(1),c.substring(0, 1));
 								optionTwo.add(anotherNewCardForOptionTwo);
 							}
@@ -354,7 +358,9 @@ public class GameMain {
 			{
 				if(!isConsole)
 				{
+					
 					String result = sc.next();
+					
 					
 					if(result.equals("S"))
 					{
@@ -370,6 +376,8 @@ public class GameMain {
 					another_card = Hit(playerTotal, console);
 				}
 				
+				
+				
 				if (playerTotal > 21 || playerTotal == 21 || !another_card)
 				{
 					break;	
@@ -380,8 +388,8 @@ public class GameMain {
 					Card newCard = new Card("10","K");
 					if(!isConsole)
 					{
-						String s = sc.next();
-						newCard = new Card(s.substring(1),s.substring(0, 1));
+						String c = sc.next();
+						newCard = new Card(c.substring(1),c.substring(0, 1));
 						playersCards.add(newCard);
 						
 					}
@@ -402,9 +410,12 @@ public class GameMain {
 					aceInPlayerHand--;
 				}	
 			}
+			
+			
+			
 			while (dealerTotal < 17 && playerTotal < 21)
 			{
-				if(dealersCards.size()==2 && dealersCards.get(0).getValue() == dealersCards.get(1).getValue() && dealerTotal<17)
+				if(dealersCards.size()==2 && dealersCards.get(0).getName().equals(dealersCards.get(1).getName())&& dealerTotal<17)
 				 {
 					 System.out.println("dealer split");
 					 List<Card> dealerOptionOne = new ArrayList<Card>();
@@ -486,23 +497,23 @@ public class GameMain {
 					    	 aceInDealerOptionTwo--;
 					     }
 					 }
-					 if(dealerOptionOneTotal>dealerOptionTwoTotal && dealerOptionOneTotal<21)
+					 if(dealerOptionOneTotal>dealerOptionTwoTotal && dealerOptionOneTotal<=21)
 					 {
 						 dealerTotal = dealerOptionOneTotal;
 					 }
-					 else if(dealerOptionTwoTotal>dealerOptionOneTotal && dealerOptionTwoTotal<21)
+					 else if(dealerOptionTwoTotal>dealerOptionOneTotal && dealerOptionTwoTotal<=21)
 					 {
 						 dealerTotal = dealerOptionTwoTotal;
 					 }
-					 else if(dealerOptionOneTotal<21&&dealerOptionTwoTotal>21)
+					 else if(dealerOptionOneTotal<=21&&dealerOptionTwoTotal>21)
 					 {
 						 dealerTotal = dealerOptionOneTotal;
 					 }
-					 else if(dealerOptionTwoTotal<21&&dealerOptionOneTotal>21)
+					 else if(dealerOptionTwoTotal<=21&&dealerOptionOneTotal>21)
 					 {
 						 dealerTotal = dealerOptionTwoTotal;
 					 }
-					 else if(dealerOptionTwoTotal>21 &&dealerOptionOneTotal>21)
+					 else if(dealerOptionTwoTotal>=21 &&dealerOptionOneTotal>21)
 					 {
 						 dealerTotal = 22;
 					 }

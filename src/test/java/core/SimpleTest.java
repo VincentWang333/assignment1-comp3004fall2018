@@ -8,6 +8,13 @@ import java.util.List;
 import junit.framework.TestCase;
 
 public class SimpleTest extends TestCase{
+	
+	public void testPoker()
+	{
+		Card a = new Card("19","Apple");
+		assertTrue(a.iSPoker() == false);
+				
+	}
 
 	public void testTheValueOfEightOfHeart()
 	{
@@ -33,10 +40,12 @@ public class SimpleTest extends TestCase{
 	} 
 	public void testShuffleDeck()
 	{
+		List<Card> exampleCards = new ArrayList<Card>(); 
 		Deck d = new Deck();
 		d.buildDeck();
 		d.shuffleDeck();
-		assertTrue(d.getSize()==52&& d.cards!=null);	
+		Card newCard = d.drawCard(exampleCards);
+		assertTrue(d.getSize()==51 && d.cards!=null && newCard.getValue()!=11);	
 	}
 	public void testDrawACard()
 	{
@@ -53,6 +62,7 @@ public class SimpleTest extends TestCase{
 		assertTrue(tenOfHeart.getValue()==10);
 		
 	}
+	
 
 	
 

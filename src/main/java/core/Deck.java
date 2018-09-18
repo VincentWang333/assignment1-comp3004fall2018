@@ -8,7 +8,7 @@ public class Deck {
 	
 
 	public static String[] names = {"Ace","2","3","4","5","6","7","8","9","10","Jack","Queen","King"};
-	public static String[] suites = {"Hearts","Spades","Cubes","Diamonds"};
+	public static String[] suites = {"Hearts","Spades","Clubs","Diamonds"};
 	public static List<Card> cards;
 
 	public void add(Card c)
@@ -45,9 +45,9 @@ public class Deck {
 	}
 	
 	public static Card drawCard(List<Card> playersCards){
-		//int total = 0;
+		int total = 0;
 		Card playerCard1 = cards.remove(0);
-		//total += playerCard1.getValue();
+		total += playerCard1.getValue();
 		playersCards.add(playerCard1);
 		return playerCard1;
 	}
