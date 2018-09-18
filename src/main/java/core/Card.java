@@ -7,22 +7,79 @@ public class Card {
 	private boolean ace;
 	public Card(String name,String suite)
 	{
-		this.name = name;
-		this.suite = suite;
-		this.value = determineCardValue(name);
+		transferCardName(name,suite);
+		this.value = determineCardValue(this.name);
+	}
+	
+	
+	public void transferCardName(String name, String suite)
+	{
+		if(name == "K")
+		{
+			this.name = "King";
+		}
+		else if(name == "Q")
+		{
+			this.name = "Queen";
+		}
+		else if(name == "J")
+		{
+			this.name = "Jack";
+		}
+		else if(name == "A")
+		{
+			this.name = "Ace";
+		}
+		else
+		{
+			this.name = name;
+		}
+		
+		
+		
+		
+		
+		if(suite == "S")
+		{
+			this.suite = "Spades";
+		}
+		else if(suite == "C")
+		{
+			this.suite = "Cubes";
+		}
+		else if(suite == "H")
+		{
+			this.suite = "Hearts";
+		}
+		else if(suite == "D")
+		{
+			this.suite = "Diamonds";
+		}
+		else
+		{
+			this.suite = suite;
+		}
+		
+		
 	}
 	private int determineCardValue(String name2) {
 		int value = 0;
 		try{
-			value = Integer.parseInt(name.substring(0,1));
+			if(name=="10")
+			{
+				value = 10;
+			}
+			else
+			   value = Integer.parseInt(name.substring(0,1));
 			return value;
 		} catch (NumberFormatException e){
-			if (name.charAt(0) == 'K' || name.charAt(0) == 'J' || name.charAt(0) == 'Q' || name.charAt(0) == '0'){
+			if (name.charAt(0) == 'K' || name.charAt(0) == 'J' || name.charAt(0) == 'Q'){
 				value = 10;
 			} else if (name.charAt(0) =='A'){
 				value = 11;
 				this.ace = true;
-			} else {
+			} 
+			else {
 				value = Integer.parseInt(name.substring(0, 1)); 
 			}
 			return value;

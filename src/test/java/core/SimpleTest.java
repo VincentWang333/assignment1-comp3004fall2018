@@ -28,16 +28,32 @@ public class SimpleTest extends TestCase{
 	public void testBuildDeck()
 	{
 		Deck d = new Deck();
-		assertTrue(d.buildDeck().size() == 52);		
+		d.buildDeck();
+		assertTrue(d.getSize()==52);		
 	} 
 	public void testShuffleDeck()
 	{
 		Deck d = new Deck();
-		List<Card> newDeck = new ArrayList<Card>();
-		newDeck = d.buildDeck();
-		newDeck = d.shuffleDeck(newDeck);
-		assertTrue(newDeck.size()==52&&newDeck!=null);	
+		d.buildDeck();
+		d.shuffleDeck();
+		assertTrue(d.getSize()==52&& d.cards!=null);	
 	}
+	public void testDrawACard()
+	{
+		Deck d = new Deck();
+		d.buildDeck();
+		List<Card> playersCards = new ArrayList<Card>();
+		assertTrue(d.getSize()==52);
+		assertTrue(d.drawCard(playersCards).getValue()== 11 && d.getSize()==51);	
+		assertTrue(playersCards.size()==1);
+	}
+	public void testValueOfTenOfHeart()
+	{
+		Card tenOfHeart = new Card("10","Heart");
+		assertTrue(tenOfHeart.getValue()==10);
+		
+	}
+
 	
 
 

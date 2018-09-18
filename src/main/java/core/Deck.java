@@ -8,10 +8,20 @@ public class Deck {
 	
 
 	public static String[] names = {"Ace","2","3","4","5","6","7","8","9","10","Jack","Queen","King"};
-	public static String[] suites = {"Hearts","Spades","Clubs","Diamonds"};
+	public static String[] suites = {"Hearts","Spades","Cubes","Diamonds"};
+	public static List<Card> cards;
+
+	public void add(Card c)
+	{
+		cards.add(c);
+	}
+	public int getSize()
+	{
+		return cards.size();
+	}
 
 	
-	public static List<Card> buildDeck(){
+	public void buildDeck(){
 		List<Card> deck = new ArrayList<Card>();
 		for (int i = 0; i < suites.length; i++){
 			for (int j = 0; j < names.length; j++){
@@ -19,28 +29,27 @@ public class Deck {
 				deck.add(k);
 			}
 		}
-		return deck;
+		cards = deck;
 	}
 	
-	public static List<Card> shuffleDeck(List<Card> deck){
+	public void shuffleDeck(){
 		List<Card> shuffledDeck = new ArrayList<Card>();
 		int r = 0;
-		while (deck.size() > 0){
+		while (cards.size() > 0){
 			Random card = new Random();
-			r = card.nextInt(deck.size());
-			Card temp = deck.remove(r);
+			r = card.nextInt(cards.size());
+			Card temp = cards.remove(r);
 			shuffledDeck.add(temp);
 		}
-		return shuffledDeck;
+		cards = shuffledDeck;
 	}
 	
-	public static int drawCard(List<Card> newDeck, int playerTotal, List<Card> playersCards){
-		int total = 0;
-		Card playerCard1 = newDeck.remove(0);
-		playerCard1.printCard();
-		total += playerCard1.getValue();
+	public static Card drawCard(List<Card> playersCards){
+		//int total = 0;
+		Card playerCard1 = cards.remove(0);
+		//total += playerCard1.getValue();
 		playersCards.add(playerCard1);
-		return total;
+		return playerCard1;
 	}
 
 	
