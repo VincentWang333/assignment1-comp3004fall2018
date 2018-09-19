@@ -8,7 +8,7 @@ public class Deck {
 	
 
 	public static String[] names = {"Ace","2","3","4","5","6","7","8","9","10","Jack","Queen","King"};
-	public static String[] suites = {"Hearts","Spades","Clubs","Diamonds"};
+	public static String[] suites = {"Hearts","Spades","Cubes","Diamonds"};
 	public static List<Card> cards;
 
 	public void add(Card c)
@@ -50,6 +50,33 @@ public class Deck {
 		total += playerCard1.getValue();
 		playersCards.add(playerCard1);
 		return playerCard1;
+	}
+	public Card drawTheCardFromDeckAndCheck(String name, String suite)
+	{
+		Card aCard = new Card(name,suite);
+		aCard = aCard.readCard(name, suite);
+		boolean notFound = true;
+		for(int i = 0; i<cards.size();i++)
+		{
+			if(cards.get(i).getName().equals(aCard.getName()) && cards.get(i).getSuite().equals(aCard.getSuite()))
+			{
+				notFound = false;
+				cards.remove(i);
+			}
+//			else
+//			{
+//				System.out.println("CARD ALREASY USED");
+//				System.exit(0);
+//			}
+		 }
+		if(notFound)
+		{
+			System.out.println("Input file is not correct(card already used)");
+			System.exit(0);
+		}
+		
+		return aCard;
+		
 	}
 
 	

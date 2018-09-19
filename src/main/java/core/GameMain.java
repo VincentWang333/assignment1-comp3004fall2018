@@ -67,7 +67,14 @@ public class GameMain {
 			Card playerFirstCard = new Card("10","K");
 			if(!isConsole) {
 				String s = sc.next();
-				playerFirstCard = new Card(s.substring(1),s.substring(0, 1));
+				playerFirstCard = newDeck.drawTheCardFromDeckAndCheck(s.substring(1), s.substring(0,1));
+				//playerFirstCard = new Card(s.substring(1),s.substring(0, 1));
+				if(!playerFirstCard.iSPoker())
+				{
+					System.out.println("Input file is not correct");
+					System.exit(0);
+					
+				}
 				playersCards.add(playerFirstCard);
 			}
 			else
@@ -87,7 +94,14 @@ public class GameMain {
 			if(!isConsole)
 			{
 				String s = sc.next();
-				playerSecondCard = new Card(s.substring(1),s.substring(0, 1));
+				playerSecondCard = newDeck.drawTheCardFromDeckAndCheck(s.substring(1), s.substring(0,1));
+				//playerSecondCard = new Card(s.substring(1),s.substring(0, 1));
+				if(!playerSecondCard.iSPoker())
+				{
+					System.out.println("Input file is not correct");
+					System.exit(0);
+					
+				}
 				playersCards.add(playerSecondCard);
 				
 			}
@@ -107,6 +121,8 @@ public class GameMain {
 			
 				playerCanSplit = true;
 			}
+			
+
 
 			
 			
@@ -115,7 +131,13 @@ public class GameMain {
 			if(!isConsole)
 			{
 				String s = sc.next();
-				dealerFirstCard = new Card(s.substring(1),s.substring(0, 1)); 
+				dealerFirstCard = newDeck.drawTheCardFromDeckAndCheck(s.substring(1),s.substring(0, 1));
+				//dealerFirstCard = new Card(s.substring(1),s.substring(0, 1));
+				if(!dealerFirstCard.iSPoker())
+				{
+					System.out.println("Input file is not correct");
+					System.exit(0);	
+				}
 				dealersCards.add(dealerFirstCard);
 				
 			}
@@ -184,13 +206,27 @@ public class GameMain {
 			    	if(!isConsole)
 			    	{
 			    		String a = sc.next();
-			    		newCardForOprionOne = new Card(a.substring(1),a.substring(0, 1));
+			    		newCardForOprionOne = newDeck.drawTheCardFromDeckAndCheck(a.substring(1),a.substring(0, 1));
+
+			    		//newCardForOprionOne = new Card(a.substring(1),a.substring(0, 1));
+			    		if(!newCardForOprionOne.iSPoker())
+						{
+							System.out.println("Input file is not correct");
+							System.exit(0);	
+						}
 			    		optionOne.add(newCardForOprionOne);
 			    		optionOneTotal += newCardForOprionOne.getValue();
+			    		
 			    		a =sc.next();
-						
-			    		newCardForOprionTwo = new Card(a.substring(1),a.substring(0, 1));
-			    		optionTwo.add(newCardForOprionTwo);
+			    		newCardForOprionTwo = newDeck.drawTheCardFromDeckAndCheck(a.substring(1),a.substring(0, 1));
+
+						//newCardForOprionTwo = new Card(a.substring(1),a.substring(0, 1));
+						if(!newCardForOprionTwo.iSPoker())
+						{
+							System.out.println("Input file is not correct");
+							System.exit(0);	
+						}
+						optionTwo.add(newCardForOprionTwo);
 			    		optionTwoTotal += newCardForOprionTwo.getValue();	
 			    	}
 			    	else
@@ -237,8 +273,14 @@ public class GameMain {
 							if(!isConsole)
 							{
 								String c = sc.next();
-		
-								anotherNewCardForOptionOne = new Card(c.substring(1),c.substring(0, 1));
+								anotherNewCardForOptionOne = newDeck.drawTheCardFromDeckAndCheck(c.substring(1),c.substring(0, 1));
+
+								//anotherNewCardForOptionOne = new Card(c.substring(1),c.substring(0, 1));
+								if(!anotherNewCardForOptionOne.iSPoker())
+								{
+									System.out.println("Input file is not correct");
+									System.exit(0);	
+								}
 								optionOne.add(anotherNewCardForOptionOne);
 							}
 							else
@@ -295,8 +337,14 @@ public class GameMain {
 							{
 								
 								String c = sc.next();
-						
-								anotherNewCardForOptionTwo = new Card(c.substring(1),c.substring(0, 1));
+								anotherNewCardForOptionTwo = newDeck.drawTheCardFromDeckAndCheck(c.substring(1),c.substring(0, 1));
+
+								//anotherNewCardForOptionTwo = new Card(c.substring(1),c.substring(0, 1));
+								if(!anotherNewCardForOptionTwo.iSPoker())
+								{
+									System.out.println("Input file is not correct");
+									System.exit(0);	
+								}
 								optionTwo.add(anotherNewCardForOptionTwo);
 							}
 							else
@@ -357,11 +405,8 @@ public class GameMain {
 			while (playerTotal < 21 && another_card && !playerCanSplit)
 			{
 				if(!isConsole)
-				{
-					
+				{			
 					String result = sc.next();
-					
-					
 					if(result.equals("S"))
 					{
 						another_card = false;
@@ -389,7 +434,13 @@ public class GameMain {
 					if(!isConsole)
 					{
 						String c = sc.next();
-						newCard = new Card(c.substring(1),c.substring(0, 1));
+						newCard = newDeck.drawTheCardFromDeckAndCheck(c.substring(1),c.substring(0, 1));
+						//newCard = new Card(c.substring(1),c.substring(0, 1));
+						if(!newCard.iSPoker())
+						{
+							System.out.println("Input file is not correct");
+							System.exit(0);	
+						}
 						playersCards.add(newCard);
 						
 					}
@@ -413,7 +464,7 @@ public class GameMain {
 			
 			
 			
-			while (dealerTotal < 17 && playerTotal < 21)
+			while (dealerTotal < 17 && playerTotal <= 21)
 			{
 				if(dealersCards.size()==2 && dealersCards.get(0).getName().equals(dealersCards.get(1).getName())&& dealerTotal<17)
 				 {
@@ -444,7 +495,14 @@ public class GameMain {
 				    	if(!isConsole)
 				    	{
 				    		String a = sc.next();
-				    		aNewDealerCard1 = new Card(a.substring(1),a.substring(0, 1));
+				    		aNewDealerCard1 = newDeck.drawTheCardFromDeckAndCheck(a.substring(1),a.substring(0, 1));
+
+				    		//aNewDealerCard1 = new Card(a.substring(1),a.substring(0, 1));
+				    		if(!aNewDealerCard1.iSPoker())
+							{
+								System.out.println("Input file is not correct");
+								System.exit(0);	
+							}
 				    		
 				    	}
 				    	else
@@ -475,7 +533,14 @@ public class GameMain {
 						 if(!isConsole)
 						 {
 							 String a = sc.next();
-							 aNewDealerCard2 = new Card(a.substring(1),a.substring(0, 1));
+							 aNewDealerCard2 = newDeck.drawTheCardFromDeckAndCheck(a.substring(1),a.substring(0, 1));
+
+							 //aNewDealerCard2 = new Card(a.substring(1),a.substring(0, 1));
+							 if(!aNewDealerCard2.iSPoker())
+								{
+									System.out.println("Input file is not correct");
+									System.exit(0);	
+								}
 						 }
 						 else
 						 {
@@ -527,14 +592,28 @@ public class GameMain {
 				{
 					if(dealersCards.size()==1)
 					{
-						dealerCard = new Card(dealerSecondHandCard.substring(1),dealerSecondHandCard.substring(0, 1)); 
+						dealerCard = newDeck.drawTheCardFromDeckAndCheck(dealerSecondHandCard.substring(1),dealerSecondHandCard.substring(0, 1));
+
+						//dealerCard = new Card(dealerSecondHandCard.substring(1),dealerSecondHandCard.substring(0, 1)); 
+						if(!dealerCard.iSPoker())
+						{
+							System.out.println("Input file is not correct");
+							System.exit(0);	
+						}
 						dealersCards.add(dealerCard);
 					}
 					else
 					{
 
 						String s = sc.next();
-						dealerCard = new Card(s.substring(1),s.substring(0, 1));
+						dealerCard = newDeck.drawTheCardFromDeckAndCheck(s.substring(1),s.substring(0, 1));
+
+						//dealerCard = new Card(s.substring(1),s.substring(0, 1));
+						if(!dealerCard.iSPoker())
+						{
+							System.out.println("Input file is not correct");
+							System.exit(0);	
+						}
 						dealersCards.add(dealerCard);
 					}
 				}
