@@ -66,7 +66,16 @@ public class GameMain {
 			System.out.print("First card: ");
 			Card playerFirstCard = new Card("10","K");
 			if(!isConsole) {
-				String s = sc.next();
+				String s = null;
+				if(sc.hasNext())
+				{
+					s = sc.next();
+				}
+				else
+				{
+					System.out.println("missing input");
+					System.exit(0);
+				}
 				playerFirstCard = newDeck.drawTheCardFromDeckAndCheck(s.substring(1), s.substring(0,1));
 				//playerFirstCard = new Card(s.substring(1),s.substring(0, 1));
 				if(!playerFirstCard.iSPoker())
@@ -93,7 +102,16 @@ public class GameMain {
 			Card playerSecondCard = new Card("10","K");
 			if(!isConsole)
 			{
-				String s = sc.next();
+				String s = null;
+				if(sc.hasNext())
+				{
+					s = sc.next();
+				}
+				else
+				{
+					System.out.println("missing input");
+					System.exit(0);
+				}
 				playerSecondCard = newDeck.drawTheCardFromDeckAndCheck(s.substring(1), s.substring(0,1));
 				//playerSecondCard = new Card(s.substring(1),s.substring(0, 1));
 				if(!playerSecondCard.iSPoker())
@@ -130,7 +148,17 @@ public class GameMain {
 			Card dealerFirstCard = new Card("10","K");
 			if(!isConsole)
 			{
-				String s = sc.next();
+				String s = null;
+				if(sc.hasNext())
+				{
+					s = sc.next();
+				}
+				else
+				{
+					System.out.println("missing input");
+					System.exit(0);
+				}
+				
 				dealerFirstCard = newDeck.drawTheCardFromDeckAndCheck(s.substring(1),s.substring(0, 1));
 				//dealerFirstCard = new Card(s.substring(1),s.substring(0, 1));
 				if(!dealerFirstCard.iSPoker())
@@ -152,7 +180,17 @@ public class GameMain {
 				aceInDealerHand++;
 			}
 			
-			dealerSecondHandCard = sc.next();
+			dealerSecondHandCard = null;
+			if(sc.hasNext())
+			{
+				dealerSecondHandCard = sc.next();
+			}
+			else
+			{
+				System.out.println("missing input");
+				System.exit(0);
+			}
+			
 			System.out.println("Dealer has: " + dealerTotal);
 		
 			//player split loop
@@ -161,7 +199,16 @@ public class GameMain {
 				String splitAnswer;
 				if(!isConsole)
 				{
-					String sa = sc.next();
+					String sa = null;
+					if(sc.hasNext())
+					{
+					  sa = sc.next();
+					}
+					else
+					{
+						System.out.println("missing input");
+						System.exit(0);
+					}
 					if(sa.equals("D"))
 					{
 						splitAnswer = "y";
@@ -205,7 +252,16 @@ public class GameMain {
 			    	
 			    	if(!isConsole)
 			    	{
-			    		String a = sc.next();
+			    		String a = null;
+			    		if(sc.hasNext())
+						{
+						  a = sc.next();
+						}
+						else
+						{
+							System.out.println("missing input");
+							System.exit(0);
+						}
 			    		newCardForOprionOne = newDeck.drawTheCardFromDeckAndCheck(a.substring(1),a.substring(0, 1));
 
 			    		//newCardForOprionOne = new Card(a.substring(1),a.substring(0, 1));
@@ -217,7 +273,16 @@ public class GameMain {
 			    		optionOne.add(newCardForOprionOne);
 			    		optionOneTotal += newCardForOprionOne.getValue();
 			    		
-			    		a =sc.next();
+			    		a = null;
+			    		if(sc.hasNext())
+						{
+						  a = sc.next();
+						}
+						else
+						{
+							System.out.println("missing input");
+							System.exit(0);
+						}
 			    		newCardForOprionTwo = newDeck.drawTheCardFromDeckAndCheck(a.substring(1),a.substring(0, 1));
 
 						//newCardForOprionTwo = new Card(a.substring(1),a.substring(0, 1));
@@ -245,7 +310,16 @@ public class GameMain {
 			    	{
 			    		if(!isConsole)
 						{
-							String r = sc.next();
+							String r = null;
+							if(sc.hasNext())
+							{
+							  r = sc.next();
+							}
+							else
+							{
+								System.out.println("missing input");
+								System.exit(0);
+							}
 				
 							if(r.equals("S"))
 							{
@@ -272,7 +346,16 @@ public class GameMain {
 							Card anotherNewCardForOptionOne = new Card("10","K");
 							if(!isConsole)
 							{
-								String c = sc.next();
+								String c = null;
+								if(sc.hasNext())
+								{
+								  c = sc.next();
+								}
+								else
+								{
+									System.out.println("missing input");
+									System.exit(0);
+								}
 								anotherNewCardForOptionOne = newDeck.drawTheCardFromDeckAndCheck(c.substring(1),c.substring(0, 1));
 
 								//anotherNewCardForOptionOne = new Card(c.substring(1),c.substring(0, 1));
@@ -308,7 +391,16 @@ public class GameMain {
 			    	{
 			    		if(!isConsole)
 						{
-							String r = sc.next();
+							String r = null;
+							if(sc.hasNext())
+							{
+							  r = sc.next();
+							}
+							else
+							{
+								System.out.println("missing input");
+								System.exit(0);
+							}
 							
 							if(r.equals("S"))
 							{
@@ -336,7 +428,16 @@ public class GameMain {
 							if(!isConsole)
 							{
 								
-								String c = sc.next();
+								String c = null;
+								if(sc.hasNext())
+								{
+								  c = sc.next();
+								}
+								else
+								{
+									System.out.println("missing input");
+									System.exit(0);
+								}
 								anotherNewCardForOptionTwo = newDeck.drawTheCardFromDeckAndCheck(c.substring(1),c.substring(0, 1));
 
 								//anotherNewCardForOptionTwo = new Card(c.substring(1),c.substring(0, 1));
@@ -405,8 +506,17 @@ public class GameMain {
 			while (playerTotal < 21 && another_card && !playerCanSplit)
 			{
 				if(!isConsole)
-				{			
-					String result = sc.next();
+				{
+					String result = null;
+					if(sc.hasNext())
+					{
+					  result = sc.next();
+					}
+					else
+					{
+						System.out.println("missing input");
+						System.exit(0);
+					}
 					if(result.equals("S"))
 					{
 						another_card = false;
@@ -433,7 +543,16 @@ public class GameMain {
 					Card newCard = new Card("10","K");
 					if(!isConsole)
 					{
-						String c = sc.next();
+						String c = null;
+						if(sc.hasNext())
+						{
+							c = sc.next();
+						}
+						else
+						{
+							System.out.println("missing input");
+							System.exit(0);
+						}
 						newCard = newDeck.drawTheCardFromDeckAndCheck(c.substring(1),c.substring(0, 1));
 						//newCard = new Card(c.substring(1),c.substring(0, 1));
 						if(!newCard.iSPoker())
@@ -494,7 +613,16 @@ public class GameMain {
 				    	Card aNewDealerCard1 = new Card("10", "K");
 				    	if(!isConsole)
 				    	{
-				    		String a = sc.next();
+				    		String a = null;
+				    		if(sc.hasNext())
+							{
+								a = sc.next();
+							}
+							else
+							{
+								System.out.println("missing input");
+								System.exit(0);
+							}
 				    		aNewDealerCard1 = newDeck.drawTheCardFromDeckAndCheck(a.substring(1),a.substring(0, 1));
 
 				    		//aNewDealerCard1 = new Card(a.substring(1),a.substring(0, 1));
@@ -532,7 +660,16 @@ public class GameMain {
 						 Card aNewDealerCard2 = new Card("10", "K");
 						 if(!isConsole)
 						 {
-							 String a = sc.next();
+							 String a = null;
+							 if(sc.hasNext())
+								{
+									a = sc.next();
+								}
+								else
+								{
+									System.out.println("missing input");
+									System.exit(0);
+								}
 							 aNewDealerCard2 = newDeck.drawTheCardFromDeckAndCheck(a.substring(1),a.substring(0, 1));
 
 							 //aNewDealerCard2 = new Card(a.substring(1),a.substring(0, 1));
@@ -553,7 +690,6 @@ public class GameMain {
 					     if(aNewDealerCard2.getValue() == 11)
 					     {
 					    	 aceInDealerOptionTwo++;
-					    	 System.out.println("the number of ace is: " +aceInDealerOptionTwo);
 					     }
 					     
 					     if(aceInDealerOptionTwo!=0 && dealerOptionTwoTotal>21)
@@ -605,7 +741,16 @@ public class GameMain {
 					else
 					{
 
-						String s = sc.next();
+						String s = null;
+						if(sc.hasNext())
+						{
+							s = sc.next();
+						}
+						else
+						{
+							System.out.println("missing input");
+							System.exit(0);
+						}
 						dealerCard = newDeck.drawTheCardFromDeckAndCheck(s.substring(1),s.substring(0, 1));
 
 						//dealerCard = new Card(s.substring(1),s.substring(0, 1));
