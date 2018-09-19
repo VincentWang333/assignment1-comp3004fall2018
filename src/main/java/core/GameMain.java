@@ -212,10 +212,12 @@ public class GameMain {
 					if(sa.equals("D"))
 					{
 						splitAnswer = "y";
+						System.out.println("player choose split");
 					}
 					else
 					{
 						splitAnswer = "n";
+						System.out.println("player choose stand");
 					}
 				}
 				else
@@ -324,10 +326,12 @@ public class GameMain {
 							if(r.equals("S"))
 							{
 								anotherCardForOptionOne = false;
+								System.out.println("player stand on option one");
 							}
 							else if (r.equals("H"))
 							{
 								anotherCardForOptionOne = true;
+								System.out.println("player hit on option one");
 							}
 						}
 						else
@@ -405,10 +409,12 @@ public class GameMain {
 							if(r.equals("S"))
 							{
 								anotherCardForOptionTwo = false;
+								System.out.println("player stand on option two");
 							}
 							else if (r.equals("H"))
 							{
 								anotherCardForOptionTwo = true;
+								System.out.println("player hit on option two");
 							}
 						}
 			    		else
@@ -520,10 +526,12 @@ public class GameMain {
 					if(result.equals("S"))
 					{
 						another_card = false;
+						System.out.println("player stand");
 					}
 					else if (result.equals("H"))
 					{
 						another_card = true;
+						System.out.println("player hit");
 					}
 				}
 				else
