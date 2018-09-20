@@ -825,7 +825,7 @@ public class GameMain {
 			System.out.println();
 			System.out.println("You have: " + total); 
 			System.out.println("Do you want to hit? (y/Y or n/N)");
-	      String answer = console.next();
+	        String answer = console.next();
 	        if (answer.indexOf("y") == 0 || answer.indexOf("Y") == 0) {
 	            ans = true;
 	        } else if (answer.indexOf("n") == 0 || answer.indexOf("N") == 0) {
@@ -836,6 +836,7 @@ public class GameMain {
 	        }
 			return ans;
 		}	
+
 //-----------------------------------------------------------------------------------------------------------------	  	  
 	  public static boolean playAgain(Scanner console, int money){
 			boolean ans;
@@ -868,18 +869,37 @@ public class GameMain {
 	  public static int winCheck(int total, int dealer, int to_play) {
 			int gains_losses = 0;
 			if (total == 21) {
-				System.out.println("You have: " + total);
-				System.out.println("You got BlackJack!  You win!");
-				gains_losses = 2 * to_play;
+				if(dealer == 21)
+				{
+					System.out.println("Dealer is Black Jack also! Dealer win");
+					gains_losses = -1 * to_play;
+				}
+				else {
+					System.out.println("You have: " + total);
+					System.out.println("You got BlackJack!  You win!");
+					gains_losses = 2 * to_play;
+					
+				}
+				
 			} else if (total > 21) {
 				System.out.println("You have: " + total);
 				System.out.println("You bust");
 				gains_losses = -1 * to_play;
 			} else if (total == dealer) {
-				System.out.println("You have: " + total);
-				System.out.println("Dealer has: " + dealer);
-				System.out.println("Push.");
-				gains_losses = 0;
+				if(total == 21 && dealer ==21)
+				{
+					System.out.println("Dealer is BlackJack! Dealer win");
+					gains_losses = -1 * to_play;
+				}
+				else {
+					System.out.println("You have: " + total);
+					System.out.println("Dealer has: " + dealer);
+					System.out.println("Push.");
+					gains_losses = 0;
+					
+				}
+				
+				
 			} else if (dealer > 21) {
 				System.out.println("Dealer has: " + dealer);
 				System.out.println("Dealer busts.  You win!");
@@ -898,5 +918,16 @@ public class GameMain {
 			}
 			return gains_losses;
 		}
+//---------------------------------------------------------------------
+	  public static boolean isBlackJack(int total)
+	  {
+		  boolean isBJ = false;
+		  if(total ==21)
+		  {
+			  isBJ = true;
+		  }
+		  return isBJ;
+		  
+	  }
 
 }
